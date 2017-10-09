@@ -8,7 +8,7 @@ fn making_an_empty_vec() {
 // The vec! macro makes it easier to instantiate a vec
 #[test]
 fn vec_macro() {
-    let vector: Vec<()> = vec![];
+    let vector = vec![0; 4];
     assert!(vector.len() == 4);
 }
 
@@ -74,7 +74,7 @@ fn shrink_vecs() {
 #[test]
 fn reserve() {
     let mut vector = vec![1];
-    vector.reserve(8);
+    vector.reserve(7);
     assert_eq!(vector.capacity(), 8);
 }
 
@@ -90,7 +90,8 @@ fn truncate() {
 #[test]
 fn insert() {
     let mut vector = vec![1, 2, 3, 4, 5];
-    vector.insert(2, 6);
+    vector.insert(5, 2);
+    vector.insert(6, 6);
     assert_eq!(vector, vec![1, 2, 3, 4, 5, 2, 6]);
 }
 
@@ -170,6 +171,7 @@ fn reverse_vecs() {
 #[test]
 fn trading_spaces() {
     let mut vector = vec![false, true];
+    vector.swap(0, 1);
     assert_eq!(vector.first(), Some(&true));
 }
 
